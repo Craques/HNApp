@@ -9,6 +9,6 @@ class HNClient {
   }
 
   getItem(int id) async {
-    return await client.get(Uri.parse('$root/item/$id.json');
+    return await client.get(Uri.parse('$root/item/$id.json'));
   }
 }
