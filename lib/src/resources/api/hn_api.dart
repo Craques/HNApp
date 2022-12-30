@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:hn_app/src/resources/api/hn_api_types.dart';
 import 'package:http/http.dart' show Client;
 
 class HNClient {
@@ -12,6 +13,8 @@ class HNClient {
 
   getItem(int id) async {
     final response = await client.get(Uri.parse('$root/item/$id.json'));
-    return jsonDecode(response.body);
+    final parsedJSON = jsonDecode(response.body);
+
+    return ItemModel.fromJSON(parsedJSON);
   }
 }
