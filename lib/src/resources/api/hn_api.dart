@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:http/http.dart' show Client;
 
 class HNClient {
@@ -5,10 +6,12 @@ class HNClient {
   final root = 'https://hacker-news.firebaseio.com/v0';
 
   getItemIds() async {
-    return await client.get(Uri.parse('$root/topstories.json'));
+    final response = await client.get(Uri.parse('$root/topstories.json'));
+    return jsonDecode(response.body);
   }
 
   getItem(int id) async {
-    return await client.get(Uri.parse('$root/item/$id.json'));
+    final response = await client.get(Uri.parse('$root/item/$id.json'));
+    return jsonDecode(response.body);
   }
 }
