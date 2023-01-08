@@ -4,6 +4,7 @@ part 'item.g.dart';
 
 @RealmModel()
 class _Item {
+  @PrimaryKey()
   late int id;
   late bool? deleted;
   late String? type;
@@ -12,6 +13,7 @@ class _Item {
   late String? text;
   late bool? dead;
   late int? parent;
+  @Ignored()
   late List<dynamic>? kids;
   late String? url;
   late int? score;
